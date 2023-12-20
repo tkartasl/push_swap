@@ -6,14 +6,16 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:53:13 by tkartasl          #+#    #+#             */
-/*   Updated: 2023/12/20 11:45:10 by tkartasl         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:40:57 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_swap(t_list **head)
+#include "push_swap.h"
+
+void    ft_swap(stack_list **head)
 {
-    t_list  *temp;
-    t_list  *third;
+    stack_list  *temp;
+    stack_list  *third;
 
     temp = (*head);
     if (temp == 0 || temp->next == 0)
@@ -25,11 +27,11 @@ void    ft_swap(t_list **head)
     (*head) = temp;
 }
 
-void    ft_push(t_list **head1, t_list **head2)
+void    ft_push(stack_list **head1, stack_list **head2)
 {
-    t_list  *temp;
-    t_list  *current1;
-    t_list  *current2;
+    stack_list  *temp;
+    stack_list  *current1;
+    stack_list  *current2;
 
     current1 = (*head1);
     current2 = (*head2);
@@ -43,17 +45,17 @@ void    ft_push(t_list **head1, t_list **head2)
     (*head2) = current2;
 } 
 
-void    ft_swap_both(t_list **head1, t_list **head2)
+void    ft_swap_both(stack_list **head1, stack_list **head2)
 {
     ft_swap(&head1);
     ft_swap(&head2);
 }
 
-void    ft_rotate(t_list **head)
+void    ft_rotate(stack_list **head)
 {
-    t_list  *last;    
-    t_list  *temp;
-    t_list  *current;
+    stack_list  *last;    
+    stack_list  *temp;
+    stack_list  *current;
 
     current = (*head);
     if (current == 0 || current->next == 0)
@@ -67,7 +69,7 @@ void    ft_rotate(t_list **head)
     last->next->next = NULL;
 }
 
-void    ft_rotate_both(t_list **head1, t_list **head2)
+void    ft_rotate_both(stack_list **head1, stack_list **head2)
 {
     ft_rotate(&head1);
     ft_rotate(&head2);

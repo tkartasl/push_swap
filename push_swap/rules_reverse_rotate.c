@@ -6,16 +6,18 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:53:03 by tkartasl          #+#    #+#             */
-/*   Updated: 2023/12/20 11:45:10 by tkartasl         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:40:57 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_reverse_rotate(t_list **head)
+#include "push_swap.h"
+
+void    ft_reverse_rotate(stack_list **head)
 {
-    t_list  *temp;
-    t_list  *last;   
-    t_list  *prev_last;
-    t_list  *current;
+    stack_list  *temp;
+    stack_list  *last;   
+    stack_list  *prev_last;
+    stack_list  *current;
 
     current = (*head);
     if (current == 0 || current->next == 0)
@@ -34,7 +36,7 @@ void    ft_reverse_rotate(t_list **head)
     prev_last->next = NULL;
 }
 
-void    ft_reverse_rotate_both(t_list **head1, t_list **head2)
+void    ft_reverse_rotate_both(stack_list **head1, stack_list **head2)
 {
     ft_reverse_rotate(&head1);
     ft_reverse_rotate(&head2);
