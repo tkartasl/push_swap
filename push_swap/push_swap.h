@@ -6,12 +6,14 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:12:18 by tkartasl          #+#    #+#             */
-/*   Updated: 2023/12/20 17:40:57 by tkartasl         ###   ########.fr       */
+/*   Updated: 2023/12/21 16:11:45 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# include "./Libft/libft.h"
 
 typedef struct s_list
 {

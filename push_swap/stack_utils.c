@@ -6,37 +6,37 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:14:24 by tkartasl          #+#    #+#             */
-/*   Updated: 2023/12/20 17:40:57 by tkartasl         ###   ########.fr       */
+/*   Updated: 2023/12/21 16:11:45 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_make_stack(char **args)
+stack_list *ft_make_stack(char **args, stack_list **head)
 {
-    stack_list  *astackhead;
     stack_list  *new;
     int         number;
     int         i;
-    long        cmp;
+    long        l;
 
-    cmp = 0;
+    l = 0;
     i = 0;
     number = 0;
+    new = NULL;
     while (args[i] != 0)
     {
         number = ft_atoi(&args[i][0]);
-        cmp = ft_atol(&args[i][0]);
-        if (number != cmp)
-        { 
-            ft_printf("Error\n");
-            return ;
-        }                 
+        l = ft_atol(&args[i][0]);       
+        if (number != l || ft_check_dup(&astackhead, number) == 1)
+            return (0);
         new = ft_lstnew_stack(number, 1);
+        if (new == 0)
+            return (0); 
         ft_lstadd_back_stack(&astackhead, new);
         i++;
     }
     ft_give_index(&astackhead);
+    return (astackhead)
 }
 
 void ft_give_index(stack_list **head) 
@@ -50,11 +50,6 @@ void ft_give_index(stack_list **head)
     {
         while (temp != NULL)
         {
-          if (current->number == temp->number)
-          {
-              printf("Error\n");
-              return ;
-          }
           if (current->number > temp->number)
               current->index = current->index + 1;
           if (current->number < temp->number)
@@ -100,4 +95,20 @@ void	ft_lstadd_back_stack(stack_list **lst, stack_list *new)
 		current = current->next;
 	}
 	last->next = new;
+}
+
+int ft_check_dup(stack_list **head, int number)
+{
+    stack_list  *current;
+
+    current = (*head);
+    if (current == 0)
+        return (0);
+    while (current != 0)
+    {
+        if (current->number == number)
+            return (1);
+        current = current->next;
+    }
+    return (0);
 }
