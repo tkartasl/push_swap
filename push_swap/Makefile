@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    #Makefile#                                         :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 14:42:20 by tkartasl          #+#    #+#              #
-#    Updated: 2023/12/15 09:56:06 by tkartasl         ###   ########.fr        #
+#    Updated: 2023/12/27 16:31:18 by tkartasl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ SRCS =
 
 OBJS = ${SRCS:.c=.o}
 
-LIBFT = ./Libft
+LIBFT = /Libft
 
-LIBFT_A = ./Libft/libft.a 
+LIBFT_A = /Libft/libft.a 
 
 MAKE = make 
 

@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 08:41:22 by tkartasl          #+#    #+#             */
-/*   Updated: 2023/12/27 16:41:17 by tkartasl         ###   ########.fr       */
+/*   Created: 2023/12/27 11:50:21 by tkartasl          #+#    #+#             */
+/*   Updated: 2023/12/27 12:20:17 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
-int	ft_toupper(int c)
+void ft_sort_check(stack_list **astackhead, stack_list **bstackhead)
 {
-	if (c >= 97 && c <= 122)
-	{
-		c = c - 32;
-	}
-	return (c);
+    if
+
 }

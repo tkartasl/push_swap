@@ -6,7 +6,7 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:14:24 by tkartasl          #+#    #+#             */
-/*   Updated: 2023/12/21 16:11:45 by tkartasl         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:43:22 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ stack_list *ft_make_stack(char **args, stack_list **head)
     {
         number = ft_atoi(&args[i][0]);
         l = ft_atol(&args[i][0]);       
-        if (number != l || ft_check_dup(&astackhead, number) == 1)
+        if (number != l || ft_check_dup(&head, number) == 1)
             return (0);
         new = ft_lstnew_stack(number, 1);
         if (new == 0)
             return (0); 
-        ft_lstadd_back_stack(&astackhead, new);
+        ft_lstadd_back_stack(&head, new);
         i++;
     }
-    ft_give_index(&astackhead);
-    return (astackhead)
+    ft_give_index(&head);
+    return (head);
 }
 
 void ft_give_index(stack_list **head) 

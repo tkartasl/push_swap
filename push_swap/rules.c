@@ -6,7 +6,7 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:53:13 by tkartasl          #+#    #+#             */
-/*   Updated: 2023/12/20 17:40:57 by tkartasl         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:51:49 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ void    ft_swap(stack_list **head)
     temp = (*head);
     if (temp == 0 || temp->next == 0)
         return ;
-    third = temp->next->next;
-    temp = temp->next
+	if (temp->next->next == 0)
+		third = NULL;
+	else
+    	third = temp->next->next;
+    temp = temp->next;
     temp->next = (*head); 
     temp->next->next = third;
     (*head) = temp;
