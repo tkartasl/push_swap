@@ -1,48 +1,40 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+         #
+#    By: tkartasl <tkartasl@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/14 14:42:20 by tkartasl          #+#    #+#              #
-#    Updated: 2023/12/29 14:45:37 by tkartasl         ###   ########.fr        #
+#    Created: 2023/12/29 13:11:44 by tkartasl          #+#    #+#              #
+#    Updated: 2023/12/29 13:26:14 by tkartasl         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 NAME = push_swap
 
 SRCS = srcs/push_swap.c\
 		array_utils.c \
+		make_stack.c \
 		rules.c \
 		rules_reverse_rotate.c \
 		stack_utils.c \
 		utils.c 
 
-OBJS = ${SRCS:.c=.o}
-
 LIBFT = Libft/
-
-LIBFT_A = Libft/libft.a 
 
 MAKE = make 
 
-FLAGS = -Wall -Wextra -Werror -I includes
+FLAGS = -Wall -Wextra -Werror
 
 CC = cc 
 
 all: ${NAME}
 
-${NAME}: ${OBJS} 
+${NAME}: 
 	${MAKE} all -C ${LIBFT}
-	${CC} ${FLAGS} ${LIBFT_A} -o ${NAME}
-	
-${OBJS}: ${SRCS}
-	${CC} ${FLAGS} -c ${SRCS}
-	
+	${CC} ${FLAGS} -o ${NAME} ${SRCS} -L Libft/ -lft
 
 clean:
-	rm -f ${OBJS}
 	${MAKE} clean -C ${LIBFT}
 
 fclean: clean

@@ -6,14 +6,14 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:27:38 by tkartasl          #+#    #+#             */
-/*   Updated: 2023/12/21 16:11:45 by tkartasl         ###   ########.fr       */
+/*   Updated: 2023/12/29 13:54:23 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h>
 
-long    ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
 	int		neg;
 	long	temp;
@@ -39,10 +39,10 @@ long    ft_atol(const char *str)
 	return (temp * neg);
 }
 
-void	ft_lstclear_stack(stack_list **head)
+void	ft_lstclear_stack(t_stack **head)
 {
-	t_list	*temp;
-	t_list	*current;
+	t_stack	*temp;
+	t_stack	*current;
 
 	if (!head)
 		return ;
@@ -57,23 +57,34 @@ void	ft_lstclear_stack(stack_list **head)
 	*head = NULL;
 }
 
-void	ft_is_sorted(stack_list **head)
+int	ft_is_sorted_a(t_stack **head)
 {
-	stack_list	*current;
-	stack_list	*second;
+	t_stack	*current;
+	t_stack	*second;
 
 	current = (*head);
 	second = current->next;
-	while (current != 0)
+	while (second != 0)
 	{
-		while (second != 0)
-		{
-			if (current->index > second->index)
-				return ;
-			second = second->next;
-		}
+		if (current->index > second->index)
+			return (1);
 		current = current->next;
 		second = current->next;
 	}
-	exit (0);	
+	return (0);
+}
+
+int	ft_lstsize_stack(t_stack *head)
+{
+	int		count;
+	t_stack	*current;
+
+	current = head;
+	count = 0;
+	while (current != NULL)
+	{
+		current = current->next;
+		count++;
+	}
+	return (count);
 }
