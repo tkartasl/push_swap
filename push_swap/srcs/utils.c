@@ -6,7 +6,7 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:27:38 by tkartasl          #+#    #+#             */
-/*   Updated: 2023/12/29 13:54:23 by tkartasl         ###   ########.fr       */
+/*   Updated: 2024/01/02 15:55:26 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,21 @@ int	ft_lstsize_stack(t_stack *head)
 		count++;
 	}
 	return (count);
+}
+
+t_stack	*ft_lstlast_stack(t_stack **lst)
+{
+	t_stack	*current;
+	t_stack	*ret;
+
+	if (*lst == 0)
+		return (*lst);
+	ret = NULL;
+	current = *lst;
+	while (current != 0)
+	{
+		ret = current;
+		current = current->next;
+	}
+	return (ret);
 }

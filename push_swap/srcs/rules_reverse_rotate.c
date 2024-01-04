@@ -6,7 +6,7 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:53:03 by tkartasl          #+#    #+#             */
-/*   Updated: 2023/12/29 14:20:56 by tkartasl         ###   ########.fr       */
+/*   Updated: 2024/01/04 15:04:44 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_reverse_rotate(t_stack **head, char stack)
 {
-	t_stack	*temp;
 	t_stack	*last;
 	t_stack	*prev_last;
 	t_stack	*current;
@@ -23,7 +22,6 @@ void	ft_reverse_rotate(t_stack **head, char stack)
 	if (current == 0 || current->next == 0)
 		return ;
 	prev_last = NULL;
-	temp = (*head);
 	last = (*head);
 	while (last->next != 0)
 	{
@@ -31,7 +29,7 @@ void	ft_reverse_rotate(t_stack **head, char stack)
 		last = last->next;
 	}
 	current = last;
-	current->next = temp;
+	current->next = (*head);
 	(*head) = current;
 	prev_last->next = NULL;
 	if (stack == 'a')

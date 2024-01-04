@@ -6,13 +6,13 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:14:24 by tkartasl          #+#    #+#             */
-/*   Updated: 2023/12/29 14:54:30 by tkartasl         ###   ########.fr       */
+/*   Updated: 2024/01/02 08:16:50 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_make_stack(char **args, t_stack **head)
+int	ft_make_stack(char **args, t_stack **head)
 {
 	t_stack	*new;
 	int		number;
@@ -29,14 +29,15 @@ void	ft_make_stack(char **args, t_stack **head)
 		number = ft_atoi(&args[i][0]);
 		l = ft_atol(&args[i][0]);
 		if (number != l || ft_check_dup(head, number) == 1)
-			return ;
+			return (1);
 		new = ft_lstnew_stack(number, 1);
 		if (new == 0)
-			return ;
+			return (1);
 		ft_lstadd_back_stack(head, new);
 		i++;
 	}
 	ft_give_index(head);
+	return (0);
 }
 
 void	ft_give_index(t_stack **head)
@@ -106,11 +107,8 @@ int	ft_check_dup(t_stack **head, int number)
 		return (0);
 	while (current != 0)
 	{
-		if (current->number == number)
-		{
-			ft_printf("Error\n");	
+		if (current->number == number)	
 			return (1);
-		}
 		current = current->next;
 	}
 	return (0);
