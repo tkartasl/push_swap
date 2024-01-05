@@ -6,7 +6,7 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:05:26 by tkartasl          #+#    #+#             */
-/*   Updated: 2024/01/04 12:39:34 by tkartasl         ###   ########.fr       */
+/*   Updated: 2024/01/05 13:51:45 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,10 @@ void	ft_sort_three(t_stack **astackhead)
 		else
 			ft_rotate(astackhead, 'a');
 		last = ft_lstlast_stack(astackhead);
-		second = (*astackhead)->next;	
+		second = (*astackhead)->next;
 	}
 	ft_lstclear_stack(astackhead);
 	exit (0);
-}
-
-int	ft_find_smallest(t_stack **astackhead, int sizeb)
-{
-	int		i;
-	int		size;
-	t_stack	*current;
-	
-	i = 0;
-	size = ft_lstsize_stack(*astackhead);
-	current = (*astackhead);
-	while (current->index != sizeb + 1)
-	{
-		current = current->next;
-		i++;	
-	}
-	if (i <= size / 2)
-		return (0);
-	else
-		return(1);	
 }
 
 void	ft_sort_mid(t_stack **astackhead, t_stack **bstackhead)
@@ -65,9 +45,9 @@ void	ft_sort_mid(t_stack **astackhead, t_stack **bstackhead)
 	while (ft_is_sorted_a(astackhead) == 1)
 	{
 		sizeb = ft_lstsize_stack(*bstackhead);
-		if((*astackhead)->index > (*astackhead)->next->index)
+		if ((*astackhead)->index > (*astackhead)->next->index)
 			ft_swap(astackhead, 'a');
-		if(ft_find_smallest(astackhead, sizeb) == 0)
+		if (ft_find_smallest(astackhead, sizeb) == 0)
 		{
 			while ((*astackhead)->index != sizeb + 1)
 				ft_rotate(astackhead, 'a');
@@ -86,44 +66,45 @@ void	ft_sort_mid(t_stack **astackhead, t_stack **bstackhead)
 	exit (0);
 }
 
-/*int	ft_get_pivot(t_stack **head)
+void	ft_sort_big_a(t_stack **heada, t_stack **headb, int i)
 {
-	int		i;
-	t_stack	*current;
-	
-	i = 0;
-	while (i < 6)
-	{
-		current = current->next;	
-		i++;
-	}
-	return (current->index);
+	if ((((*heada)->index >> i) & 1) == 0)
+		ft_push(heada, headb, 'b');
+	else
+		ft_rotate(heada, 'a');
+}
+
+void	ft_sort_big_b(t_stack **heada, t_stack **headb, int i)
+{
+	if ((((*headb)->index >> i) & 1) == 0 && ft_is_sorted_a(heada) == 1)
+		ft_rotate(headb, 'b');
+	else
+		ft_push(headb, heada, 'a');
 }
 
 void	ft_sort_big(t_stack **heada, t_stack **headb)
 {
-	int		pivot;
-	t_stack	*current;
-	t_stack	*second;
+	int	i;
+	int	size;
 
-	while (ft_is_sorted_a(heada) == 1)
-	{	
-		current = *heada;
-		second = *heada;
-		while (ft_lstsize_stack(*heada) > 6 && ft_is_sorted_a(heada) == 1)
+	size = 0;
+	i = 0;
+	while (ft_is_sorted_a(heada) == 1 || (*headb) != 0)
+	{
+		size = ft_lstsize_stack(*heada);
+		while (size > 0 && ft_is_sorted_a(heada) == 1)
 		{
-			pivot = ft_get_pivot(heada);
-			if (current->next->index < current->index)
-				ft_swap(heada, 'a');
-			second = second->next->next;
-			if (second->index < pivot)
-				current = current->next;
-			if (current->index > second->index)
-			{	
-				ft_rotate(heada, 'a');
-				ft_swap(heada, 'a');
-			}		
+			ft_sort_big_a(heada, headb, i);
+			size--;
 		}
-	
+		i++;
+		size = ft_lstsize_stack(*headb);
+		while (size > 0)
+		{
+			ft_sort_big_b(heada, headb, i);
+			size--;
+		}
 	}
-}*/
+	ft_lstclear_stack(heada);
+	exit (0);
+}

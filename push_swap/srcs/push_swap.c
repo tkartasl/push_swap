@@ -6,7 +6,7 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:05:33 by tkartasl          #+#    #+#             */
-/*   Updated: 2024/01/04 15:35:38 by tkartasl         ###   ########.fr       */
+/*   Updated: 2024/01/05 13:27:45 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
-void	ft_get_stack(char** args, t_stack **astackhead , t_stack **bstackhead)
+void	ft_get_stack(char **args, t_stack **astackhead, t_stack **bstackhead)
 {
-	int i;
+	int	i;
 
 	i = ft_make_stack(args, astackhead);
 	if (i == 1)
@@ -52,48 +52,26 @@ void	ft_get_stack(char** args, t_stack **astackhead , t_stack **bstackhead)
 		ft_sort_three(astackhead);
 	if (ft_lstsize_stack(*astackhead) <= 50)
 		ft_sort_mid(astackhead, bstackhead);
-	else		
-		ft_divide_stack(astackhead, bstackhead);
-
+	else
+		ft_sort_big(astackhead, bstackhead);
 }
 
-void	ft_divide_stack(t_stack **astackhead, t_stack **bstackhead)
+int	ft_find_smallest(t_stack **astackhead, int sizeb)
 {
-	int	size;
-	int	i;
+	int		i;
+	int		size;
+	t_stack	*current;
 
-	i = 2;
+	i = 0;
 	size = ft_lstsize_stack(*astackhead);
-	while (ft_is_sorted_a(astackhead) == 1 && (*bstackhead) == 0)
+	current = (*astackhead);
+	while (current->index != sizeb + 1)
 	{
-		
-		while ((*astackhead) != 0)
-		{
-			if ((*astackhead)->index > (*astackhead)->next->index)
-				ft_swap(astackhead, 'a');
-			if ((*astackhead)->index >= size / i)
-				ft_push(astackhead, bstackhead, 'b');
-			else
-			{
-				ft_push(astackhead, bstackhead, 'b');
-				ft_rotate(bstackhead, 'b');
-			}	
-		}
-		i = i + 1;
-		while ((*bstackhead) != 0)
-		{
-			if ((*bstackhead)->index < (*bstackhead)->next->index)
-				ft_swap(bstackhead, 'b');
-			if ((*bstackhead)->index <= size / i)
-				ft_push(bstackhead, astackhead, 'a');
-			else
-			{
-				ft_push(bstackhead, astackhead, 'a');
-				ft_rotate(astackhead, 'a');
-			}	
-		}
-		i = i + 1;
+		current = current->next;
+		i++;
 	}
-	ft_lstclear_stack(astackhead);
-	exit (0);
+	if (i <= size / 2)
+		return (0);
+	else
+		return (1);
 }

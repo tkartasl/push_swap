@@ -6,7 +6,7 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:14:24 by tkartasl          #+#    #+#             */
-/*   Updated: 2024/01/02 08:16:50 by tkartasl         ###   ########.fr       */
+/*   Updated: 2024/01/05 13:36:50 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	ft_check_dup(t_stack **head, int number)
 		return (0);
 	while (current != 0)
 	{
-		if (current->number == number)	
+		if (current->number == number)
 			return (1);
 		current = current->next;
 	}
