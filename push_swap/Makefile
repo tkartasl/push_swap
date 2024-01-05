@@ -6,20 +6,19 @@
 #    By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 14:42:20 by tkartasl          #+#    #+#              #
-#    Updated: 2023/12/29 14:45:37 by tkartasl         ###   ########.fr        #
+#    Updated: 2024/01/04 08:29:45 by tkartasl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRCS = srcs/push_swap.c\
-		array_utils.c \
-		rules.c \
-		rules_reverse_rotate.c \
-		stack_utils.c \
-		utils.c 
-
-OBJS = ${SRCS:.c=.o}
+		srcs/array_utils.c \
+		srcs/rules.c \
+		srcs/rules_reverse_rotate.c \
+		srcs/stack_utils.c \
+		srcs/utils.c \
+		srcs/sort.c
 
 LIBFT = Libft/
 
@@ -33,16 +32,11 @@ CC = cc
 
 all: ${NAME}
 
-${NAME}: ${OBJS} 
+${NAME}: ${SRCS}
 	${MAKE} all -C ${LIBFT}
-	${CC} ${FLAGS} ${LIBFT_A} -o ${NAME}
+	${CC} ${FLAGS} ${SRCS} ${LIBFT_A} -o ${NAME}
 	
-${OBJS}: ${SRCS}
-	${CC} ${FLAGS} -c ${SRCS}
-	
-
 clean:
-	rm -f ${OBJS}
 	${MAKE} clean -C ${LIBFT}
 
 fclean: clean
