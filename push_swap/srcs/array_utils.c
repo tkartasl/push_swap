@@ -6,7 +6,7 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:44:50 by tkartasl          #+#    #+#             */
-/*   Updated: 2024/01/05 13:23:44 by tkartasl         ###   ########.fr       */
+/*   Updated: 2024/01/08 09:25:25 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ char	**ft_make_array(char **argv, int argc)
 	if (argc == 2)
 	{
 		args = ft_split(&argv[1][0], ' ');
+		if (args[0] == 0)
+		{
+			free (args);
+			return (0);
+		}
 		if (args == 0 || ft_str_check(args) < 0)
 			return (0);
 	}

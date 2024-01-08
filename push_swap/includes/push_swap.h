@@ -6,7 +6,7 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:12:18 by tkartasl          #+#    #+#             */
-/*   Updated: 2024/01/05 14:22:54 by tkartasl         ###   ########.fr       */
+/*   Updated: 2024/01/08 09:19:39 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_rotate(t_stack **head, char stack);
 void	ft_swap_both(t_stack **head1, t_stack **head2);
 void	ft_swap(t_stack **head, char stack);
 void	ft_push(t_stack **head1, t_stack **head2, char stack);
-void	ft_get_stack(char **args, t_stack **astackhead, t_stack **bstackhead);
+void	ft_get_stack(char **args, t_stack **heada, t_stack **headb, int argc);
 void	ft_sort_three(t_stack **astackhead);
 void	ft_sort_mid(t_stack **astackhead, t_stack **bstackhead);
 void	ft_sort_big(t_stack **astackhead, t_stack **bstackhead);

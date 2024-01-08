@@ -6,7 +6,7 @@
 /*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:05:33 by tkartasl          #+#    #+#             */
-/*   Updated: 2024/01/05 13:27:45 by tkartasl         ###   ########.fr       */
+/*   Updated: 2024/01/08 09:25:32 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,34 +26,50 @@ int	main(int argc, char *argv[])
 		write(2, "Error\n", 6);
 		return (0);
 	}
-	ft_get_stack(args, &astackhead, &bstackhead);
+	ft_get_stack(args, &astackhead, &bstackhead, argc);
 	return (0);
 }
 
-void	ft_get_stack(char **args, t_stack **astackhead, t_stack **bstackhead)
+static void	ft_free(char **arr)
+{
+	int	n;
+
+	n = 0;
+	while (arr[n] != 0)
+	{
+		free(arr[n]);
+		n++;
+	}
+	free(arr);
+}
+
+void	ft_get_stack(char **args, t_stack **heada, t_stack **headb, int argc)
 {
 	int	i;
 
-	i = ft_make_stack(args, astackhead);
+	i = ft_make_stack(args, heada);
 	if (i == 1)
 	{
 		write(2, "Error\n", 6);
 		free (args);
-		ft_lstclear_stack(astackhead);
+		ft_lstclear_stack(heada);
 		exit (0);
 	}
-	free (args);
-	if (ft_is_sorted_a(astackhead) == 0)
-	{
-		ft_lstclear_stack(astackhead);
-		exit (0);
-	}
-	if (ft_lstsize_stack(*astackhead) <= 3)
-		ft_sort_three(astackhead);
-	if (ft_lstsize_stack(*astackhead) <= 50)
-		ft_sort_mid(astackhead, bstackhead);
+	if (argc == 2)
+		ft_free(args);
 	else
-		ft_sort_big(astackhead, bstackhead);
+		free (args);
+	if (ft_is_sorted_a(heada) == 0)
+	{
+		ft_lstclear_stack(heada);
+		exit (0);
+	}
+	if (ft_lstsize_stack(*heada) <= 3)
+		ft_sort_three(heada);
+	if (ft_lstsize_stack(*heada) <= 50)
+		ft_sort_mid(heada, headb);
+	else
+		ft_sort_big(heada, headb);
 }
 
 int	ft_find_smallest(t_stack **astackhead, int sizeb)
