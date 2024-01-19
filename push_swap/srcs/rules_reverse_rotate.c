@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rules_reverse_rotate.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkartasl <tkartasl@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:53:03 by tkartasl          #+#    #+#             */
-/*   Updated: 2024/01/04 15:04:44 by tkartasl         ###   ########.fr       */
+/*   Updated: 2024/01/19 09:34:38 by tkartasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

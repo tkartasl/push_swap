@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tkartasl <tkartasl@student.42.fr>          +#+  +:+       +#+         #
+#    By: tkartasl <tkartasl@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 14:42:20 by tkartasl          #+#    #+#              #
-#    Updated: 2024/01/04 08:29:45 by tkartasl         ###   ########.fr        #
+#    Updated: 2024/01/19 09:35:08 by tkartasl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
